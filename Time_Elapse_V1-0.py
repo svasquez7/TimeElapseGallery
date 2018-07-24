@@ -64,8 +64,6 @@ def iothub_file_upload():
     
 
 def iothub_client_post_message():
-
-    def iothub_client_post_message():
     global ISSENDING
     ISSENDING = True
     while ISSENDING:
