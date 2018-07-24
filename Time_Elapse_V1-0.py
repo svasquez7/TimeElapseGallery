@@ -6,21 +6,21 @@ import base64
 from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
 from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError, DeviceMethodReturnValue
 
-from picamera import PiCamera
+#from picamera import PiCamera
 from time import sleep
 from datetime import datetime
 
-DEVICEID = ""
-PROJECTNAME = ""
-HUB_CONNECTION_STRING = "HostName=TimeElapseFun.azure-devices.net;DeviceId=" + DEVICEID +";SharedAccessKey=LfgWJvx/RKd8MyebWRyQA6xOUiNGGrfmFDBjcZzFBJ4="
+DEVICEID = "SVasquez-RaspberryPi3"
+PROJECTNAME = "Local Yocal 1"
+HUB_CONNECTION_STRING = "HostName=TimeElapseFun.azure-devices.net;DeviceId=SVasquez-RaspberryPi3;SharedAccessKey=LfgWJvx/RKd8MyebWRyQA6xOUiNGGrfmFDBjcZzFBJ4="
 BLOB_PROTOCOL = IoTHubTransportProvider.HTTP
 
 MESSAGE_PROTOCOL = IoTHubTransportProvider.MQTT
 MESSAGE_TIMEOUT = 10000
 
-PATHTOFILE = '/home/pi/Desktop/'
-FILENAME = ""
-MSG_TXT = "{\"deviceID\": %s, \"projectName\": %s,\"frameName\": %s}"
+PATHTOFILE = '/home/pi/Pictures/'
+FILENAME = datetime.now().strftime("%Y%m%d-%H%M%S") + ".jpg"
+MSG_TXT = "{\"deviceID\": \"%s\", \"projectName\": \"%s\",\"frameName\": \"%s\"}"
 
 def blob_upload_conf_callback(result, user_context):
     if str(result) == 'OK':
@@ -29,11 +29,15 @@ def blob_upload_conf_callback(result, user_context):
         print ( "...file upload callback returned: " + str(result) )
 		
 def take_picture():
-	FILENAME = datetime.datetime.now().strftime("%Y%m%d-%H%M%S") + ".jpg"
-	camera.start_preview()
-	sleep(7)
-	camera.capture(PATHTOFILE + FILENAME)
-	camera.stop_preview()	
+    try:
+        print ( "Taking picture, FILENAME: " + FILENAME )
+        camera.start_preview()
+        sleep(7)
+        camera.capture(PATHTOFILE + FILENAME)
+        camera.stop_preview()	
+    except:
+        camera.stop_preview()
+        print ("an error occured capturing picture.")
 
 def send_confirmation_callback(message, result, user_context):
     print ( "IoT Hub responded to message with status: %s" % (result) )
@@ -43,26 +47,25 @@ def iothub_file_upload():
     f = open(PATHTOFILE + FILENAME, "rb")
     content = base64.b64encode(f.read())
     client.upload_blob_async(FILENAME, content, len(content), blob_upload_conf_callback, 0)
-    iothub_client_post_message()
+    sleep(7)
+    
 
 def iothub_client_post_message():
 
-    client = IoTHubClient(HUB_CONNECTION_STRING, MESSAGE_PROTOCOL)
-    print ( "IoT Hub device sending periodic messages, press Ctrl-C to exit" )
-    
+    message_client = IoTHubClient(HUB_CONNECTION_STRING, MESSAGE_PROTOCOL)    
     msg_txt_formatted = MSG_TXT % (DEVICEID, PROJECTNAME, FILENAME)
     message = IoTHubMessage(msg_txt_formatted)
-
     # Send the message.
     print( "Sending message: %s" % message.get_string() )
-    client.send_event_async(message, send_confirmation_callback, None)
+    message_client.send_event_async(message, send_confirmation_callback, None)
 
 
 if __name__ == '__main__':
-    print ( "Simulating a file upload using the Azure IoT Hub Device SDK for Python" )
+    print ( "Starting process of taking pic and uploading to IOT HUB" )
     print ( "    BLOB_PROTOCOL %s" % BLOB_PROTOCOL )
     print ( "    Connection string=%s" % HUB_CONNECTION_STRING )
     
-    take_picture()
-    iothub_file_upload()
+    take_picture()     
+    iothub_file_upload()   
+    iothub_client_post_message()
 	
