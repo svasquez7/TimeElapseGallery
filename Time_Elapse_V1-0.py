@@ -56,7 +56,7 @@ def iothub_client_init(protocol):
     return client
 
 def iothub_file_upload():    
-    client = IoTHubClient(BLOB_PROTOCOL)
+    client = iothub_client_init(BLOB_PROTOCOL)
     f = open(PATHTOFILE + FILENAME, "rb")
     content = base64.b64encode(f.read())
     client.upload_blob_async(FILENAME, content, len(content), blob_upload_conf_callback, 0)
