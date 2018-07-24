@@ -6,7 +6,7 @@ import base64
 from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
 from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError, DeviceMethodReturnValue
 
-#from picamera import PiCamera
+from picamera import PiCamera
 from time import sleep
 from datetime import datetime
 
