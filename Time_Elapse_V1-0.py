@@ -10,6 +10,8 @@ from picamera import PiCamera
 from time import sleep
 from datetime import datetime
 
+camera = PiCamera()
+
 DEVICEID = "SVasquez-RaspberryPi3"
 PROJECTNAME = "Local Yocal 1"
 HUB_CONNECTION_STRING = "HostName=TimeElapseFun.azure-devices.net;DeviceId=SVasquez-RaspberryPi3;SharedAccessKey=LfgWJvx/RKd8MyebWRyQA6xOUiNGGrfmFDBjcZzFBJ4="
