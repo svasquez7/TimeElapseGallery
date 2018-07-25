@@ -14,7 +14,7 @@ camera = PiCamera()
 
 DEVICEID = "My-RaspberryPi-3b"
 PROJECTNAME = "IOT Fun"
-HUB_CONNECTION_STRING = "HostName=TimeElapseFun.azure-devices.net;DeviceId=SVasquez-RaspberryPi3;SharedAccessKey=LfgWJvx/RKd8MyebWRyQA6xOUiNGGrfmFDBjcZzFBJ4="
+HUB_CONNECTION_STRING = "HostName=TimeElapseFun.azure-devices.net;DeviceId=GitHubUser;SharedAccessKey=Y8TPJJKHobcN0ciOdmzxM5HbE+BxKUcyTIcywv0JCVw="
 BLOB_PROTOCOL = IoTHubTransportProvider.HTTP
 
 MESSAGE_PROTOCOL = IoTHubTransportProvider.MQTT
