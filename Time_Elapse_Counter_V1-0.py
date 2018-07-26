@@ -28,7 +28,7 @@ MESSAGE_TIMEOUT = 10000
 ISSENDING = False
 
 PATHTOFILE = '/home/pi/Pictures/'
-FILENAME = datetime.now().strftime("%Y%m%d-%H%M%S") + ".jpg"
+FILENAME = DEVICEID.replace(" ", "-") + datetime.now().strftime("%Y%m%d-%H%M%S") + ".jpg"
 MSG_TXT = "{\"deviceID\": \"%s\", \"projectName\": \"%s\",\"frameName\": \"%s\"}"
 
 def blob_upload_conf_callback(result, user_context):
