@@ -83,6 +83,7 @@ if __name__ == '__main__':
     print ( "    BLOB_PROTOCOL %s" % BLOB_PROTOCOL )
     print ( "    Connection string=%s" % HUB_CONNECTION_STRING )
     
+    input("Press Enter to continue...")
     frameCount = 0
     while frameCount <= NUMBER_OF_FRAMES:
         take_picture()     
