@@ -12,6 +12,10 @@ from datetime import datetime
 
 camera = PiCamera()
 
+camera.resolution = (2592, 1944)
+camera.framerate = 15
+camera.rotation =90
+
 NUMBER_OF_FRAMES = 60
 MILISECONDS_BETWEEN_FRAMES = 120
 DEVICEID = "My-RaspberryPi-3b"
