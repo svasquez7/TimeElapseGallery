@@ -81,9 +81,8 @@ def iothub_client_post_message():
 if __name__ == '__main__':
     print ( "Starting process of taking pic and uploading to IOT HUB" )
     print ( "    BLOB_PROTOCOL %s" % BLOB_PROTOCOL )
-    print ( "    Connection string=%s" % HUB_CONNECTION_STRING )
-    
-    input("Press Enter to continue...")
+    print ( "    Connection string=%s" % HUB_CONNECTION_STRING )   
+
     frameCount = 0
     while frameCount <= NUMBER_OF_FRAMES:
         take_picture()     
