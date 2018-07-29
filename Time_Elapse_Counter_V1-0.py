@@ -14,12 +14,16 @@ camera = PiCamera()
 
 camera.resolution = (2592, 1944)
 camera.framerate = 15
-camera.rotation =90
+#camera.rotation =90
 
 NUMBER_OF_FRAMES = 60
 MILISECONDS_BETWEEN_FRAMES = 120
-DEVICEID = "My-RaspberryPi-3b"
-PROJECTNAME = "Colorado Sunset"
+#****************** Fill in a deviceid and projectname***********************
+#********** deviceid can be any string to identify you, example: mikes pi 3b 1, mikes-raspberrypi-zerowifi *********************
+#*********** project name should describe the pictures your gonna capture, example: Colorado Sunset, My garden.....********
+DEVICEID = "git-hub-user"
+PROJECTNAME = ""
+#*******************************************************************************************************************************
 HUB_CONNECTION_STRING = "HostName=TimeElapseFun.azure-devices.net;DeviceId=GitHubUser;SharedAccessKey=Y8TPJJKHobcN0ciOdmzxM5HbE+BxKUcyTIcywv0JCVw="
 BLOB_PROTOCOL = IoTHubTransportProvider.HTTP
 
@@ -92,6 +96,10 @@ if __name__ == '__main__':
         take_picture(file_name)     
         iothub_file_upload(file_name)   
         iothub_client_post_message(file_name)
+
+        if os.path.exists("demofile.txt"):
+            os.remove(PATHTOFILE + file_name)
+
         frameCount = frameCount + 1
         time.sleep(MILISECONDS_BETWEEN_FRAMES)
 	
