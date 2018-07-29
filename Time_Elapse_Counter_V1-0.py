@@ -16,6 +16,7 @@ camera.resolution = (2592, 1944)
 camera.framerate = 15
 #camera.rotation =90
 
+#*********** configure number of frames you want and how many seconds between frames, the default is 1 frame every 2 minutes for 2 hours.
 NUMBER_OF_FRAMES = 60
 SECONDS_BETWEEN_FRAMES = 120
 #****************** Fill in a deviceid and projectname***********************
