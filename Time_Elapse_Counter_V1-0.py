@@ -17,7 +17,7 @@ camera.framerate = 15
 #camera.rotation =90
 
 NUMBER_OF_FRAMES = 60
-MILISECONDS_BETWEEN_FRAMES = 120
+SECONDS_BETWEEN_FRAMES = 120
 #****************** Fill in a deviceid and projectname***********************
 #********** deviceid can be any string to identify you, example: mikes pi 3b 1, mikes-raspberrypi-zerowifi *********************
 #*********** project name should describe the pictures your gonna capture, example: Colorado Sunset, My garden.....********
@@ -101,5 +101,5 @@ if __name__ == '__main__':
             os.remove(PATHTOFILE + file_name)
 
         frameCount = frameCount + 1
-        time.sleep(MILISECONDS_BETWEEN_FRAMES)
+        time.sleep(SECONDS_BETWEEN_FRAMES)
 	
