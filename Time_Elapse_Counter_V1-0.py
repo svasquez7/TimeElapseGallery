@@ -98,7 +98,7 @@ if __name__ == '__main__':
         iothub_file_upload(file_name)   
         iothub_client_post_message(file_name)
 
-        if os.path.exists("demofile.txt"):
+        if os.path.exists(PATHTOFILE + file_name):
             os.remove(PATHTOFILE + file_name)
 
         frameCount = frameCount + 1
