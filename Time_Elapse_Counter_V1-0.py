@@ -17,13 +17,13 @@ camera.framerate = 15
 #camera.rotation =90
 
 #*********** configure number of frames you want and how many seconds between frames, the default is 1 frame every 2 minutes for 2 hours.
-NUMBER_OF_FRAMES = 60
-SECONDS_BETWEEN_FRAMES = 120
+NUMBER_OF_FRAMES = 108
+SECONDS_BETWEEN_FRAMES = 1200
 #****************** Fill in a deviceid and projectname***********************
 #********** deviceid can be any string to identify you, example: mikes pi 3b 1, mikes-raspberrypi-zerowifi *********************
 #*********** project name should describe the pictures your gonna capture, example: Colorado Sunset, My garden.....********
-DEVICEID = "git-hub-user"
-PROJECTNAME = ""
+DEVICEID = "steve-v-pi-3b"
+PROJECTNAME = "Color in Bloom"
 #*******************************************************************************************************************************
 HUB_CONNECTION_STRING = "HostName=TimeElapseFun.azure-devices.net;DeviceId=GitHubUser;SharedAccessKey=Y8TPJJKHobcN0ciOdmzxM5HbE+BxKUcyTIcywv0JCVw="
 BLOB_PROTOCOL = IoTHubTransportProvider.HTTP
