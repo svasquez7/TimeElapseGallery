@@ -11,7 +11,9 @@ seconds between frames. File: Time_Elapse_Counter_V1-0.py
  You can also change the frame rate for your project/gif by a post at the following api, the api will re-splice your photos into a gif with the milisecond frame rate posted. Fill in your project name and deviceid for best results.
  
  Action: Post
+ 
  Endpoint: http://timeelapsegallery.azurewebsites.net/api/frame/[projectname]
+ 
  payload:
  
  {
